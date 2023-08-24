@@ -35,12 +35,13 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'euclidianAce/BetterLua.vim'
 Plug 'folke/neodev.nvim'
 
+Plug 'f-person/git-blame.nvim'
+Plug 'f-person/auto-dark-mode.nvim'
 Plug 'f-person/nvim-sort-dart-imports'
-"Plug 'f-person/pubspec-assist-nvim'
-"Plug 'f-person/git-blame.nvim'
-Plug '/Users/fperson/workspace/personal_projects/git-blame.nvim'
-Plug '/Users/fperson/workspace/personal_projects/pubspec-assist-nvim'
-Plug '/Users/fperson/workspace/personal_projects/auto-dark-mode.nvim'
+Plug 'f-person/pubspec-assist-nvim'
+" Plug '/Users/fperson/workspace/personal_projects/git-blame.nvim'
+" Plug '/Users/fperson/workspace/personal_projects/auto-dark-mode.nvim'
+" Plug '/Users/fperson/workspace/personal_projects/pubspec-assist-nvim'
 
 
 "Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': 'dart'}
@@ -107,7 +108,6 @@ hi! link LspDiagnosticsSignInformation GruvboxBlueSign
 hi! link LspDiagnosticsDefaultHint GruvboxAqua
 hi! link LspDiagnosticsSignHint GruvboxAquaSign
 
-set shell=fish
 syntax on
 set tabstop=4
 set shiftwidth=4

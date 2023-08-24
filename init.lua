@@ -2,7 +2,15 @@ if vim.g.shadowvim then
 	return
 end
 
-vim.api.nvim_command("source ~/.config/nvim/config.vim")
+local config_path = vim.fn.stdpath('config')
+local vim_config
+if config_path:find("/") then
+	vim_config = config_path .. "/config.vim"
+else
+	vim_config = config_path .. "\\config.vim"
+end
+
+vim.api.nvim_command("source " .. vim_config)
 
 require("telescope").setup({
 	defaults = {
