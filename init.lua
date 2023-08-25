@@ -31,7 +31,9 @@ require("catppuccin").setup({
 
 vim.cmd.colorscheme("catppuccin")
 
-require("telescope").setup({
+local telescope = require("telescope")
+
+telescope.setup({
 	defaults = {
 		layout_config = {
 			horizontal = {
@@ -89,6 +91,7 @@ require("telescope").setup({
 		},
 	},
 })
+telescope.load_extension("smart_open")
 
 require("lualine").setup({
 	options = {
@@ -241,14 +244,6 @@ lsp.lua_ls.setup({
 	},
 })
 
--- lsp.sumneko_lua.setup {
--- cmd = {
--- '/Users/fperson/Applications/lua-language-server/bin/lua-language-server'
--- },
--- globals = {'vim', 'love'},
--- on_attach = on_attach
--- }
-
 lsp.jsonls.setup({ on_attach = on_attach })
 
 require("flutter-tools").setup({
@@ -264,7 +259,7 @@ require("flutter-tools").setup({
 
 		settings = {
 			lineLength = 100,
-			analysisExcludedFolders = { vim.fn.expand("$HOME/.pub-cache/") },
+			analysisExcludedFolders = { vim.fn.expand("$HOME/.pub-cache/"), vim.fn.expand("$HOME/fvm/versions/") },
 		},
 	},
 })
@@ -322,7 +317,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>pf",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<CR>",
+	"<cmd>lua require('telescope').extensions.smart_open.smart_open()<CR>",
 	keymap_opts
 )
 vim.api.nvim_set_keymap(
@@ -370,26 +365,26 @@ require("null-ls").setup({
 
 lsp.tsserver.setup({ on_attach = on_attach })
 
-local auto_dark_mode = require("auto-dark-mode")
+require("auto-dark-mode").setup({ update_interval = 5000 })
 
-auto_dark_mode.setup({ update_interval = 5000 })
-
---vim.keymap.set({ "v", "n" }, "tt", ":TroubleToggle<CR>")
-
-local config_group = vim.api.nvim_create_augroup("MyConfigGroup", {})
 local session_manager = require("session_manager")
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+local config_group = vim.api.nvim_create_augroup("MyConfigGroup", {})
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	group = config_group,
 	callback = function()
-		if vim.bo.filetype ~= "git" and not vim.bo.filetype ~= "gitcommit" then
-			session_manager.autosave_session()
+		if vim.bo.filetype ~= "git" and not vim.bo.filetype ~= "gitcommit" and not vim.bo.filetype ~= "gitrebase" then
+			session_manager.save_current_session()
 		end
 	end,
 })
 
+local session_config = require("session_manager.config")
+session_manager.setup({
+	autoload_mode = session_config.AutoloadMode.CurrentDir,
+	autosave_last_session = true,
+})
+
 require("nvim-treesitter.configs").setup({
-	-- A list of parser names, or "all"
 	ensure_installed = { "lua", "dart" },
 	sync_install = false,
 	auto_install = false,

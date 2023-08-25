@@ -84,6 +84,8 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'commit': '33eb472b459f1d2bf49e1615472
 Plug 'HiPhish/rainbow-delimiters.nvim'
 Plug 'utilyre/barbecue.nvim'
 Plug 'SmiteshP/nvim-navic'
+Plug 'kkharji/sqlite.lua'
+Plug 'danielfalk/smart-open.nvim'
 
 call plug#end()
 
