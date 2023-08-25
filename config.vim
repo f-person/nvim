@@ -10,9 +10,7 @@ Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
 "Plug 'dart-lang/dart-vim-plugin'
-Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/goyo.vim'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
@@ -50,10 +48,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 
-Plug 'luochen1990/rainbow'
-Plug 'gruvbox-community/gruvbox'
-Plug 'projekt0n/github-nvim-theme'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 Plug 'nvim-lua/popup.nvim'
@@ -87,14 +81,15 @@ Plug 'Shatur/neovim-session-manager'
 Plug 'HampusHauffman/block.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'commit': '33eb472b459f1d2bf49e16154726743ab3ca1c6d' , 'do': ':TSUpdate' }
 
+Plug 'HiPhish/rainbow-delimiters.nvim'
+Plug 'utilyre/barbecue.nvim'
+Plug 'SmiteshP/nvim-navic'
+
 call plug#end()
 
 syntax on
-set background=dark
 let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_contrast_light="hard"
-colorscheme catppuccin
-let g:rainbow_active = 1
 set colorcolumn=80,100
 lang en_US.UTF-8
 
@@ -290,7 +285,6 @@ endif
 
 " icons
 let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
 
 "autocmd BufEnter,BufNew *.dart call SetCocConfigs()
 

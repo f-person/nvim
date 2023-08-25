@@ -2,7 +2,7 @@ if vim.g.shadowvim then
 	return
 end
 
-local config_path = vim.fn.stdpath('config')
+local config_path = vim.fn.stdpath("config")
 local vim_config
 if config_path:find("/") then
 	vim_config = config_path .. "/config.vim"
@@ -11,6 +11,25 @@ else
 end
 
 vim.api.nvim_command("source " .. vim_config)
+
+require("catppuccin").setup({
+	integrations = {
+		treesitter = true,
+		rainbow_delimiters = true,
+		gitgutter = true,
+		lsp_trouble = true,
+		markdown = true,
+	},
+
+	styles = {
+		comments = { "italic" },
+		conditionals = { "italic" },
+		functions = { "italic" },
+		types = { "bold" },
+	},
+})
+
+vim.cmd.colorscheme("catppuccin")
 
 require("telescope").setup({
 	defaults = {
@@ -72,9 +91,25 @@ require("telescope").setup({
 })
 
 require("lualine").setup({
+	options = {
+		icons_enabled = true,
+		theme = "catppuccin",
+		globalstatus = true,
+	},
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_b = {
+			"branch",
+			"diff",
+			{
+				"diagnostics",
+				sources = {
+					"nvim_lsp",
+					"nvim_diagnostic",
+					"nvim_workspace_diagnostic",
+				},
+			},
+		},
 		lualine_c = { "filename" },
 		lualine_x = {},
 		lualine_y = { "encoding", "fileformat", "filetype", "%{CodeStatsXp()}" },
@@ -338,7 +373,6 @@ lsp.tsserver.setup({ on_attach = on_attach })
 local auto_dark_mode = require("auto-dark-mode")
 
 auto_dark_mode.setup({ update_interval = 5000 })
-auto_dark_mode.init()
 
 --vim.keymap.set({ "v", "n" }, "tt", ":TroubleToggle<CR>")
 
@@ -357,25 +391,13 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all"
 	ensure_installed = { "lua", "dart" },
-
-	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
-
-	-- Automatically install missing parsers when entering buffer
-	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
 	auto_install = false,
-
 	indent = {
 		enable = true,
 	},
-
 	highlight = {
 		enable = true,
-
-		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-		-- Using this option may slow down your editor, and you may see some duplicate highlights.
-		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
 	},
 })
@@ -447,14 +469,12 @@ nvimtree.setup({
 			return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
 		end,
 	},
-	-- filters = {
-	--   custom = { "^.git$" },
-	-- },
-	-- renderer = {
-	--   indent_width = 1,
-	-- },
 })
 
 vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>:NvimTreeToggle<CR>", keymap_opts)
 
 vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>:NvimTreeFindFileToggle<CR>", keymap_opts)
+
+require("barbecue").setup({
+	theme = "catppuccin",
+})
