@@ -79,7 +79,6 @@ Plug 'folke/trouble.nvim'
 "Plug 'onsails/diaglist.nvim'
 
 Plug 'akinsho/flutter-tools.nvim'
-Plug 'Shatur/neovim-session-manager'
 Plug 'HampusHauffman/block.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'commit': '33eb472b459f1d2bf49e16154726743ab3ca1c6d' , 'do': ':TSUpdate' }
 
