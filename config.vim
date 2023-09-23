@@ -75,6 +75,8 @@ Plug 'aznhe21/actions-preview.nvim'
 
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
+"Plug '/Users/fperson/workspace/forks/trouble.nvim'
+"Plug 'onsails/diaglist.nvim'
 
 Plug 'akinsho/flutter-tools.nvim'
 Plug 'Shatur/neovim-session-manager'
@@ -96,14 +98,6 @@ set colorcolumn=80,100
 lang en_US.UTF-8
 
 highlight link luaOperator Special
-hi! link LspDiagnosticsDefaultError GruvboxRed
-hi! link LspDiagnosticsSignError GruvboxRedSign
-hi! link LspDiagnosticsDefaultWarning GruvboxYellow
-hi! link LspDiagnosticsSignWarning GruvboxYellowSign
-hi! link LspDiagnosticsDefaultInformation GruvboxBlue
-hi! link LspDiagnosticsSignInformation GruvboxBlueSign
-hi! link LspDiagnosticsDefaultHint GruvboxAqua
-hi! link LspDiagnosticsSignHint GruvboxAquaSign
 
 syntax on
 set tabstop=4

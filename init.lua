@@ -107,8 +107,8 @@ require("lualine").setup({
 			{
 				"diagnostics",
 				sources = {
-					"nvim_lsp",
-					"nvim_diagnostic",
+					--"nvim_lsp",
+					--"nvim_diagnostic",
 					"nvim_workspace_diagnostic",
 				},
 			},
@@ -222,7 +222,7 @@ lsp.gopls.setup({
 	settings = { gopls = { usePlaceholders = true, completeUnimported = true } },
 })
 
-lsp.ccls.setup({ on_attach = on_attach })
+--lsp.ccls.setup({ on_attach = on_attach })
 
 require("neodev").setup({
 	-- add any options here, or leave empty to use the default settings
@@ -259,6 +259,7 @@ require("flutter-tools").setup({
 
 		settings = {
 			lineLength = 100,
+			--lineLength = 80,
 			analysisExcludedFolders = { vim.fn.expand("$HOME/.pub-cache/"), vim.fn.expand("$HOME/fvm/versions/") },
 		},
 	},
