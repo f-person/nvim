@@ -452,7 +452,7 @@ nvimtree.setup({
 
 vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>:NvimTreeToggle<CR>", keymap_opts)
 
-vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>:NvimTreeFindFileToggle<CR>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>:NvimTreeFindFile<CR>", keymap_opts)
 
 require("barbecue").setup({
 	theme = "catppuccin",
