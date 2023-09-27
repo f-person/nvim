@@ -330,3 +330,6 @@ let g:copilot_no_tab_map = v:true
 
 imap <silent><script><expr> <C-S-I> copilot#Suggest()
 
+
+map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
