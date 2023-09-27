@@ -137,11 +137,15 @@ tnoremap <m-`> <C-\><C-n> :tabNext<CR>
 
 nnoremap <leader>ph :GitGutterPreviewHunk<cr>
 
-" Ctrl + 2hjkl to navigate between splits
-nnoremap <C-h> <C-w>
-nnoremap <C-j> <C-w>
-nnoremap <C-k> <C-w>
-nnoremap <C-l> <C-w>
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+map <up> <C-w><up>
+map <down> <C-w><down>
+map <left> <C-w><left>
+map <right> <C-w><right>
 
 " disabled keys
 nnoremap <PageUp> <Nop>
