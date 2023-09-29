@@ -316,14 +316,6 @@ autocmd FileType lua let g:completion_confirm_key = "\<C-Y>"
 autocmd FileType markdown nmap j gj
 autocmd FileType markdown nmap k gk
 
-"let g:gitblame_message_template = ' <author> • <date> • <summary> • <sha>'
-"let g:gitblame_message_when_not_committed = ' <author>, <date> • <summary>'
-"let g:gitblame_date_format = '%r'
-"let g:gitblame_position = "right_align"
-"let g:gitblame_set_extmark_options = {
-	"\ 'priority': 13,
-	"\ }
-
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 imap <silent><script><expr> <C-F> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
