@@ -42,7 +42,6 @@ Plug 'f-person/pubspec-assist-nvim'
 " Plug '/Users/fperson/workspace/personal_projects/pubspec-assist-nvim'
 
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': 'dart'}
 Plug 'neovim/nvim-lspconfig'
 "Plug 'nvim-lua/completion-nvim'
 Plug 'RishabhRD/popfix'
@@ -176,42 +175,6 @@ endfunction
 nnoremap <silent> <expr> o <SID>NewLineInsertExpr(1, 'o')
 nnoremap <silent> <expr> O <SID>NewLineInsertExpr(1, 'O')
 
-let g:didSetCocConfigs = 0
-function! SetCocConfigs()
-  if g:didSetCocConfigs == 1
-	return
-  endif
-
-  let g:didSetCocConfigs = 1
-
-  nmap <leader>ca v<Plug>(coc-codeaction-selected)
-  nmap gd :call CocActionAsync('jumpDefinition')<CR>
-  nmap <leader>gr <Plug>(coc-references)
-  nmap <leader>rr <Plug>(coc-rename)
-  nmap cd :CocList diagnostics<CR>
-  nmap K :call CocActionAsync('doHover')<CR>
-
-  " Better display for messages
-  set cmdheight=2
-  " Smaller updatetime for CursorHold & CursorHoldI
-  set updatetime=300
-  " always show signcolumns
-  set signcolumn=yes
-  " use <tab> for trigger completion and navigate to the next complete item
-  function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction
-
-  " use <c-space>for trigger completion
-  inoremap <silent><expr> <c-space> coc#refresh()
-
-  inoremap <silent><expr> <TAB>
-		\ pumvisible() ? "\<C-n>" :
-		\ <SID>check_back_space() ? "\<TAB>" :
-		\ coc#refresh()
-endfunction
-
 function GDScriptFormat()
 	silent !gdformat %:p
 	:e
@@ -285,8 +248,6 @@ endif
 
 " icons
 let g:webdevicons_enable = 1
-
-"autocmd BufEnter,BufNew *.dart call SetCocConfigs()
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"

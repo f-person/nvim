@@ -21,6 +21,11 @@ require("catppuccin").setup({
 		markdown = true,
 	},
 
+	background = {
+		light = "latte",
+		dark = "frappe",
+	},
+
 	styles = {
 		comments = { "italic" },
 		conditionals = { "italic" },
@@ -428,4 +433,3 @@ vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>:NvimTreeFindFile<CR>40<C-w>>",
 require("barbecue").setup({
 	theme = "catppuccin",
 })
-
