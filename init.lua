@@ -257,8 +257,9 @@ require("flutter-tools").setup({
 		},
 
 		settings = {
-			lineLength = 100,
 			--lineLength = 80,
+			--lineLength = 100,
+			lineLength = 120,
 			analysisExcludedFolders = { vim.fn.expand("$HOME/.pub-cache/"), vim.fn.expand("$HOME/fvm/versions/") },
 		},
 	},
@@ -422,8 +423,9 @@ nvimtree.setup({
 
 vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>:NvimTreeToggle<CR>", keymap_opts)
 
-vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>:NvimTreeFindFile<CR>", keymap_opts)
+vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>:NvimTreeFindFile<CR>40<C-w>>", keymap_opts)
 
 require("barbecue").setup({
 	theme = "catppuccin",
 })
+

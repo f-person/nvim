@@ -37,7 +37,7 @@ Plug 'f-person/git-blame.nvim'
 Plug 'f-person/auto-dark-mode.nvim'
 Plug 'f-person/nvim-sort-dart-imports'
 Plug 'f-person/pubspec-assist-nvim'
-" Plug '/Users/fperson/workspace/personal_projects/git-blame.nvim'
+"Plug '/Users/fperson/workspace/personal_projects/git-blame.nvim'
 " Plug '/Users/fperson/workspace/personal_projects/auto-dark-mode.nvim'
 " Plug '/Users/fperson/workspace/personal_projects/pubspec-assist-nvim'
 
@@ -142,10 +142,11 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
-map <up> <C-w><up>
-map <down> <C-w><down>
-map <left> <C-w><left>
-map <right> <C-w><right>
+" Resize currently focused split with arrow keys
+map <up> <C-w>+
+map <down> <C-w>-
+map <left> <C-w><
+map <right> <C-w>>
 
 " disabled keys
 nnoremap <PageUp> <Nop>
@@ -223,7 +224,7 @@ autocmd FileType gdscript :command! -buffer GDScriptFormat call GDScriptFormat()
 augroup sortDartImports
 	autocmd!
 	autocmd BufWrite *.dart lua vim.lsp.buf.format()
-	autocmd BufWrite *.dart :DartSortImports
+	"autocmd BufWrite *.dart :DartSortImports
 augroup END
 
 autocmd FileType cpp au BufWritePost *cpp :FormatWrite
@@ -250,10 +251,10 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_gopls_options=['-remote=auto']
 
-let g:go_fmt_command = "golines"
-let g:go_fmt_options = {
-    \ 'golines': '-m 80 --base-formatter gofmtrlx',
-    \ }
+"let g:go_fmt_command = "golines"
+"let g:go_fmt_options = {
+    "\ 'golines': '-m 80 --base-formatter gofmtrlx',
+    "\ }
 
 autocmd FileType dart set expandtab
 autocmd FileType dart set tabstop=2
