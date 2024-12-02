@@ -79,7 +79,7 @@ Plug 'folke/trouble.nvim'
 
 Plug 'akinsho/flutter-tools.nvim'
 Plug 'HampusHauffman/block.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', { 'commit': '33eb472b459f1d2bf49e16154726743ab3ca1c6d' , 'do': ':TSUpdate' }
+"Plug 'nvim-treesitter/nvim-treesitter', { 'commit': '33eb472b459f1d2bf49e16154726743ab3ca1c6d' , 'do': ':TSUpdate' }
 
 Plug 'HiPhish/rainbow-delimiters.nvim'
 Plug 'utilyre/barbecue.nvim'
@@ -190,7 +190,7 @@ augroup sortDartImports
 	"autocmd BufWrite *.dart :DartSortImports
 augroup END
 
-autocmd FileType cpp au BufWritePost *cpp :FormatWrite
+"autocmd FileType cpp au BufWritePost *cpp :FormatWrite
 
 autocmd FileType javascript au BufWrite * :PrettierAsync
 autocmd FileType typescript au BufWrite * :PrettierAsync
@@ -199,7 +199,7 @@ autocmd FileType typescript au BufWrite * :PrettierAsync
 autocmd FileType python map <leader>b<leader> :w !python3 %:p <CR>
 autocmd FileType dart   map <leader>b<leader> :w !dart    %:p <CR>
 
-autocmd FileType lua au BufWritePost *lua :lua require("stylua-nvim").format_file()
+"autocmd FileType lua au BufWritePost *lua :lua require("stylua-nvim").format_file()
 
 
 " go config

@@ -12,29 +12,29 @@ end
 
 vim.api.nvim_command("source " .. vim_config)
 
-require("catppuccin").setup({
-	integrations = {
-		treesitter = true,
-		rainbow_delimiters = true,
-		gitgutter = true,
-		lsp_trouble = true,
-		markdown = true,
-	},
+--require("catppuccin").setup({
+	--integrations = {
+		--treesitter = true,
+		--rainbow_delimiters = true,
+		--gitgutter = true,
+		--lsp_trouble = true,
+		--markdown = true,
+	--},
 
-	background = {
-		light = "latte",
-		dark = "frappe",
-	},
+	--background = {
+		--light = "latte",
+		--dark = "frappe",
+	--},
 
-	styles = {
-		comments = { "italic" },
-		conditionals = { "italic" },
-		functions = { "italic" },
-		types = { "bold" },
-	},
-})
+	--styles = {
+		--comments = { "italic" },
+		--conditionals = { "italic" },
+		--functions = { "italic" },
+		--types = { "bold" },
+	--},
+--})
 
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("wildcharm")
 
 local telescope = require("telescope")
 
@@ -120,7 +120,9 @@ require("lualine").setup({
 		},
 		lualine_c = { "filename" },
 		lualine_x = {},
-		lualine_y = { "encoding", "fileformat", "filetype", "%{CodeStatsXp()}" },
+        lualine_y = { "encoding", "fileformat", "filetype", 
+        --"%{CodeStatsXp()}"
+    },
 		lualine_z = { "progress", "location" },
 	},
 	extensions = { "quickfix" },
@@ -332,7 +334,7 @@ vim.api.nvim_set_keymap(
 	"<cmd>lua require'telescope.builtin'.lsp_workspace_symbols(require('telescope.themes').get_dropdown({}))<CR>",
 	keymap_opts
 )
-vim.api.nvim_set_keymap("n", "tt", "<cmd>:TroubleToggle<CR>", keymap_opts)
+vim.api.nvim_set_keymap("n", "tt", "<cmd>:Trouble diagnostics toggle<CR>", keymap_opts)
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>bb",
@@ -340,51 +342,51 @@ vim.api.nvim_set_keymap(
 	keymap_opts
 )
 
-require("formatter").setup({
-	logging = false,
-	filetype = {
-		cpp = {
-			function()
-				return {
-					exe = "clang-format",
-					args = {
-						"--assume-filename",
-						vim.api.nvim_buf_get_name(0),
-						"--style",
-						"Google",
-					},
-					stdin = true,
-					cwd = vim.fn.expand("%:p:h"), -- Run clang-format in cwd of the file.
-				}
-			end,
-		},
-	},
-})
+--require("formatter").setup({
+	--logging = false,
+	--filetype = {
+		--cpp = {
+			--function()
+				--return {
+					--exe = "clang-format",
+					--args = {
+						--"--assume-filename",
+						--vim.api.nvim_buf_get_name(0),
+						--"--style",
+						--"Google",
+					--},
+					--stdin = true,
+					--cwd = vim.fn.expand("%:p:h"), -- Run clang-format in cwd of the file.
+				--}
+			--end,
+		--},
+	--},
+--})
 
-require("null-ls").setup({
-	sources = {
-		require("null-ls").builtins.formatting.stylua,
-		-- require("null-ls").builtins.diagnostics.eslint,
-		--require("null-ls").builtins.completion.spell,
-	},
-})
+--require("null-ls").setup({
+	--sources = {
+		----require("null-ls").builtins.formatting.stylua,
+		---- require("null-ls").builtins.diagnostics.eslint,
+		----require("null-ls").builtins.completion.spell,
+	--},
+--})
 
-lsp.tsserver.setup({ on_attach = on_attach })
+--lsp.tsserver.setup({ on_attach = on_attach })
 
 require("auto-dark-mode").setup({ update_interval = 5000 })
 
-require("nvim-treesitter.configs").setup({
-	ensure_installed = { "lua", "dart" },
-	sync_install = false,
-	auto_install = false,
-	indent = {
-		enable = true,
-	},
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	},
-})
+--require("nvim-treesitter.configs").setup({
+	--ensure_installed = { "lua", "dart" },
+	--sync_install = false,
+	--auto_install = false,
+	--indent = {
+		--enable = true,
+	--},
+	--highlight = {
+		--enable = true,
+		--additional_vim_regex_highlighting = false,
+	--},
+--})
 
 require("block").setup()
 
@@ -433,3 +435,5 @@ vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>:NvimTreeFindFile<CR>40<C-w>>",
 require("barbecue").setup({
 	theme = "catppuccin",
 })
+
+
