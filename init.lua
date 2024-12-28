@@ -258,6 +258,7 @@ require("flutter-tools").setup({
 	},
 	lsp = {
 		on_attach = on_attach,
+
 		color = {
 			enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
 			background = true, -- highlight the background
@@ -265,9 +266,11 @@ require("flutter-tools").setup({
 
 		settings = {
 			--lineLength = 80,
-			--lineLength = 100,
-			lineLength = 120,
+            lineLength = 100,
+			--lineLength = 120,
 			analysisExcludedFolders = { vim.fn.expand("$HOME/.pub-cache/"), vim.fn.expand("$HOME/fvm/versions/") },
+          enableSnippets = true,
+      updateImportsOnRename = true, -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
 		},
 	},
 })
@@ -312,7 +315,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 vim.api.nvim_set_keymap(
 	"n",
 	"gr",
-	"<cmd>lua require'telescope.builtin'.lsp_references(require('telescope.themes').get_dropdown({}))<CR>",
+	"<cmd>lua require'telescope.builtin'.lsp_references()<CR>",
 	keymap_opts
 )
 vim.api.nvim_set_keymap("n", "<leader>rg", "<cmd>lua require'telescope.builtin'.live_grep()<CR>", keymap_opts)
@@ -331,16 +334,28 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>ws",
-	"<cmd>lua require'telescope.builtin'.lsp_workspace_symbols(require('telescope.themes').get_dropdown({}))<CR>",
+	"<cmd>lua require'telescope.builtin'.lsp_workspace_symbols()<CR>",
 	keymap_opts
 )
 vim.api.nvim_set_keymap("n", "tt", "<cmd>:Trouble diagnostics toggle<CR>", keymap_opts)
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>bb",
-	"<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({}))<CR>",
+	"<cmd>lua require'telescope.builtin'.buffers()<CR>",
 	keymap_opts
 )
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>tr",
+	"<cmd>:Telescope resume<CR>",
+	keymap_opts
+)
+
+-- show numbers in telescope
+vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
+
+
 
 --require("formatter").setup({
 	--logging = false,
@@ -436,4 +451,5 @@ require("barbecue").setup({
 	theme = "catppuccin",
 })
 
+require('Trouble').setup()
 
