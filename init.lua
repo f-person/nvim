@@ -234,21 +234,21 @@ require("neodev").setup({
 	-- add any options here, or leave empty to use the default settings
 })
 
-lsp.lua_ls.setup({
-	on_attach = on_attach,
-	cmd = {
-		"/Users/fperson/Applications/lua-language-server/bin/lua-language-server",
-		"-E",
-		"/Users/fperson/Applications/lua-language-server/main.lua",
-	},
-	settings = {
-		Lua = {
-			completion = {
-				callSnippet = "Replace",
-			},
-		},
-	},
-})
+--lsp.lua_ls.setup({
+	--on_attach = on_attach,
+	--cmd = {
+		--"/Users/fperson/Applications/lua-language-server/bin/lua-language-server",
+		--"-E",
+		--"/Users/fperson/Applications/lua-language-server/main.lua",
+	--},
+	--settings = {
+		--Lua = {
+			--completion = {
+				--callSnippet = "Replace",
+			--},
+		--},
+	--},
+--})
 
 lsp.jsonls.setup({ on_attach = on_attach })
 
@@ -452,4 +452,9 @@ require("barbecue").setup({
 })
 
 require('Trouble').setup()
+
+
+require 'plugins'
+require 'lsp'
+
 

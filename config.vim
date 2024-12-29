@@ -8,6 +8,8 @@ Plug 'andymass/vim-matchup'
 Plug 'voithos/vim-python-matchit'
 Plug 'nvim-lualine/lualine.nvim'
 
+"Plug 'liljaylj/codestats.nvim'
+
 Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
 "Plug 'dart-lang/dart-vim-plugin'
 Plug 'preservim/nerdcommenter'
@@ -113,7 +115,7 @@ set updatetime=50
 set hidden
 
 " codestats config
-source ~/.config/nvim/codestats_api_key.vim
+"source ~/.config/nvim/codestats_api_key.vim
 
 nnoremap <leader>fa :FlutterRun<cr>
 nnoremap <leader>fq :FlutterQuit<cr>
