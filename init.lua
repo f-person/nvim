@@ -38,64 +38,6 @@ vim.cmd.colorscheme("wildcharm")
 
 local telescope = require("telescope")
 
-telescope.setup({
-	defaults = {
-		layout_config = {
-			horizontal = {
-				height = { padding = 1 },
-				width = { padding = 18 },
-				prompt_position = "top",
-			},
-			vertical = {
-				height = { padding = 1 },
-				width = { padding = 18 },
-				prompt_position = "top",
-			},
-		},
-		wrap_results = true,
-		mappings = {
-			i = {
-				["<C-h>"] = "which_key",
-				["<C-j>"] = "move_selection_next",
-				["<C-k>"] = "move_selection_previous",
-			},
-		},
-		file_ignore_patterns = { "project/target", "project/project", "target" },
-		path_display = { "smart" },
-		borderchars = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
-		sorting_strategy = "ascending",
-	},
-	pickers = {
-		find_files = {},
-		buffers = {
-			sort_mru = true,
-			ignore_current_buffer = true,
-		},
-	},
-	extensions = {
-		["ui-select"] = {
-			require("telescope.themes").get_dropdown({
-				-- even more opts
-			}),
-			-- pseudo code / specification for writing custom displays, like the one
-			-- for "codeactions"
-			-- specific_opts = {
-			--   [kind] = {
-			--     make_indexed = function(items) -> indexed_items, width,
-			--     make_displayer = function(widths) -> displayer
-			--     make_display = function(displayer) -> function(e)
-			--     make_ordinal = function(e) -> string
-			--   },
-			--   -- for example to disable the custom builtin "codeactions" display
-			--      do the following
-			--   codeactions = false,
-			-- }
-		},
-		live_grep_args = {
-			auto_quoting = true, -- enable/disable auto-quoting
-		},
-	},
-})
 telescope.load_extension("smart_open")
 
 require("lualine").setup({
@@ -454,7 +396,5 @@ require("barbecue").setup({
 require('Trouble').setup()
 
 
-require 'plugins'
-require 'lsp'
 
 
