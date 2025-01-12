@@ -41,6 +41,16 @@ M._on_attach = function(_, bufnr)
 	bind("<leader>ca", "<cmd>lua require 'actions-preview'.code_actions()<CR>")
 
 	bind("<leader>cd", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
+
+	require("lsp_signature").on_attach({ hint_enable = false }, bufnr)
+
+	-- open definitions etc in a floating window
+	bind("gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+	bind("gpt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>")
+	bind("gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
+	bind("gpD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>")
+	bind("gP", "<cmd>lua require('goto-preview').close_all_win()<CR>")
+	bind("gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>")
 end
 
 return M
