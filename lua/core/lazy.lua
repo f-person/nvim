@@ -27,7 +27,7 @@ M.setup_lazy_package_manager = function()
 		-- colorscheme that will be used when installing plugins.
 		install = { colorscheme = { "habamax" } },
 		-- automatically check for plugin updates
-		checker = { enabled = true },
+		checker = { enabled = false },
 	})
 end
 
