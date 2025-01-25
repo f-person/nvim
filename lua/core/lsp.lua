@@ -19,6 +19,18 @@ M.setup_language_servers = function()
 	servers.dartls.setup({})
 
 	servers.gopls.setup({})
+
+	servers.sourcekit.setup({
+		root_dir = servers.util.root_pattern(".git", "Package.swift", "compile_commands.json"),
+
+		capabilities = {
+			workspace = {
+				didChangeWatchedFiles = {
+					dynamicRegistration = true,
+				},
+			},
+		},
+	})
 end
 
 M._on_attach = function(_, bufnr)
