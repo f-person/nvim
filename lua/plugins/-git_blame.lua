@@ -7,7 +7,7 @@ return {
 	-- If you want to load the plugin at startup, add something like event = "VeryLazy",
 	-- or lazy = false. One of both options will work.
 	opts = {
-		delay = 10,
+		delay = 300,
 		message_template = " <author> • <date> • <summary> • <sha>",
 		message_when_not_committed = " <author>, <date> • <summary>",
 		date_format = "%r",

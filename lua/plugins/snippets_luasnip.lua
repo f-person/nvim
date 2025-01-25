@@ -16,19 +16,10 @@ return {
 		HOME = os.getenv("HOME")
 		-- load snippets from the ~/.config/nvim/snippets/ directory for the corresponding language
 		--	require("luasnip/loaders/from_snipmate").lazy_load({
-		--		path = { HOME .. "/.config/nvim/lua/snippets-luasnip" },
+		--		path = {  "./lua/snippets-luasnip" },
 		--	})
 
-		require("luasnip").filetype_extend("dart", { "flutter" })
-
-		-- command to open the snippet file that belongs to the language you are editing
-		vim.cmd([[
-            function SnippetsEdit()
-                execute ":e ~/.config/nvim/lua/snippets-luasnip" . &filetype . ".lua"
-            endfunction
-            command! SnippetsEdit call SnippetsEdit()
-        ]])
-		--		nmap('<Leader>se', ':SnippetsEdit<CR>')
+		--require("luasnip").filetype_extend("dart", { "flutter" })
 
 		local ls = require("luasnip")
 		-- some shorthands...
