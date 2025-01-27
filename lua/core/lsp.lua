@@ -21,6 +21,9 @@ M.setup_language_servers = function()
 	servers.gopls.setup({})
 
 	servers.sourcekit.setup({
+		single_file_support = true,
+		filetypes = { "swift", "swiftinterface", "c", "cpp", "objective-c", "objective-cpp" },
+
 		root_dir = servers.util.root_pattern(".git", "Package.swift", "compile_commands.json"),
 
 		capabilities = {

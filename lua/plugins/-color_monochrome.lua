@@ -5,4 +5,5 @@ return {
 	"sho-87/kanagawa-paper.nvim",
 	"love-pengy/lillilac.nvim",
 	"rebelot/kanagawa.nvim",
+	"Mofiqul/dracula.nvim",
 }
