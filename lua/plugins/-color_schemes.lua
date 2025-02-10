@@ -11,4 +11,7 @@ return {
 	"rebelot/kanagawa.nvim",
 
 	"Mofiqul/dracula.nvim",
+	"yorik1984/newpaper.nvim",
+
+	"rose-pine/neovim",
 }
