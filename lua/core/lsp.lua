@@ -14,13 +14,14 @@ M.setup_language_servers = function()
 
 	local servers = require("lspconfig")
 
-	servers.lua_ls.setup({})
+	servers.lua_ls.setup {}
 
-	servers.dartls.setup({})
+	-- TODO: seems like we already have dartls through flutter-tools, so this is probably extra
+	-- servers.dartls.setup({})
 
-	servers.gopls.setup({})
+	servers.gopls.setup {}
 
-	servers.sourcekit.setup({
+	servers.sourcekit.setup {
 		single_file_support = true,
 		filetypes = { "swift", "swiftinterface", "c", "cpp", "objective-c", "objective-cpp" },
 
@@ -33,7 +34,7 @@ M.setup_language_servers = function()
 				},
 			},
 		},
-	})
+	}
 end
 
 M._on_attach = function(_, bufnr)

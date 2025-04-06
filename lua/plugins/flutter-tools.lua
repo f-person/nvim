@@ -16,7 +16,7 @@ return {
 				--lineLength = 120,
 				analysisExcludedFolders = { vim.fn.expand("$HOME/.pub-cache/"), vim.fn.expand("$HOME/fvm/versions/") },
 				enableSnippets = true,
-				updateImportsOnRename = true
+				updateImportsOnRename = true,
 			},
 
 			-- trying to fix formatting:
@@ -24,5 +24,5 @@ return {
 				textDocument = { formatting = { dynamicRegistration = false } },
 			},
 		},
-	}
+	},
 }
