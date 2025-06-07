@@ -11,6 +11,7 @@ return {
 				require("luasnip.loaders.from_vscode").lazy_load()
 			end,
 		},
+		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
 		HOME = os.getenv("HOME")
@@ -23,19 +24,21 @@ return {
 
 		local ls = require("luasnip")
 		-- some shorthands...
-		local snip = ls.snippet
+		local snippet = ls.snippet
 		local text = ls.text_node
 		local insert = ls.insert_node
 		local func = ls.function_node
 
-		ls.config.setup({
+		local rep = require("luasnip.extras").rep
+
+		ls.config.setup {
 			store_selection_keys = "<Tab>",
 			region_check_events = "CursorMoved",
 			delete_check_events = "TextChanged",
-		})
+		}
 
 		ls.add_snippets("all", {
-			snip({ trig = "todo", name = "TODO_comment", dscr = "Add a TODO comment" }, {
+			snippet({ trig = "todo", name = "TODO_comment", dscr = "Add a TODO comment" }, {
 				-- get the comment string of the buffer you are in and add a space to it
 				func(function()
 					return vim.api.nvim_get_option_value("commentstring", { scope = "local" }):match("^(.*)%%s")
@@ -51,7 +54,7 @@ return {
 					return rightComment
 				end, {}),
 			}),
-			snip({ trig = "fix", name = "FIXME_comment", dscr = "Add a FIXME comment" }, {
+			snippet({ trig = "fix", name = "FIXME_comment", dscr = "Add a FIXME comment" }, {
 				-- get the comment string of the buffer you are in and add a space to it
 				func(function()
 					return vim.api.nvim_get_option_value("commentstring", { scope = "local" }):match("^(.*)%%s")
@@ -66,6 +69,19 @@ return {
 						:match("^(.*)%%s(.*)")
 					return rightComment
 				end, {}),
+			}),
+		})
+
+		ls.add_snippets("dart", {
+			snippet({ trig = "jsonser", name = "json_serializable", dscr = "Generate fromJson and toJson methods" }, {
+				text("factory "),
+				insert(1, "Model"),
+				text("Dto.fromJson(Map<String, dynamic> json) => _$"),
+				rep(1),
+				text("DtoFromJson(json);"),
+				text { "", "Map<String, dynamic> toJson() => _$" },
+				rep(1),
+				text("DtoToJson(this);"),
 			}),
 		})
 	end,

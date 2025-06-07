@@ -3,7 +3,6 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-
 return {
 	"hrsh7th/nvim-cmp",
 	dependencies = {
@@ -18,12 +17,12 @@ return {
 	},
 
 	config = function()
-		local cmp = require "cmp"
+		local cmp = require("cmp")
 
-		cmp.setup({
+		cmp.setup {
 			snippet = {
 				expand = function(args)
-					require('luasnip').lsp_expand(args.body)
+					require("luasnip").lsp_expand(args.body)
 				end,
 			},
 			mapping = {
@@ -31,11 +30,11 @@ return {
 				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 				["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 				["<C-y>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-				["<C-e>"] = cmp.mapping({
+				["<C-e>"] = cmp.mapping {
 					i = cmp.mapping.abort(),
 					c = cmp.mapping.close(),
-				}),
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				},
+				["<CR>"] = cmp.mapping.confirm { select = true },
 
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
@@ -53,15 +52,14 @@ return {
 					end
 				end, { "i", "s" }),
 			},
-			sources = cmp.config.sources({ { name = "nvim_lsp" }, { name = "vsnip" } }, { { name = "buffer" } }),
-		})
+			sources = cmp.config.sources({ { name = "nvim_lsp" }, { name = "luasnip" } }, { { name = "buffer" } }),
+		}
 
+		local lspconfig = require("lspconfig")
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		local lspconfig = require "lspconfig"
-		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-		lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, {
+		lspconfig.util.default_config = vim.tbl_deep_extend("force", lspconfig.util.default_config, {
 			capabilities = capabilities,
 		})
-	end
+	end,
 }
