@@ -37,6 +37,8 @@ M.setup_language_servers = function()
 	}
 
 	servers.gleam.setup {}
+
+	servers.ts_ls.setup {}
 end
 
 M._on_attach = function(_, bufnr)

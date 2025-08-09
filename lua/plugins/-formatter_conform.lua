@@ -9,6 +9,8 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			dart = { "dart_format" },
+			javascript = { "prettierd" },
+			typescript = { "prettierd" },
 		},
 
 		default_format_opts = {
