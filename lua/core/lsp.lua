@@ -12,20 +12,20 @@ M.setup_language_servers = function()
 		end,
 	})
 
-	local servers = require("lspconfig")
+	local config = vim.lsp.config
 
-	servers.lua_ls.setup {}
+	config('lua_ls', {})
 
 	-- TODO: seems like we already have dartls through flutter-tools, so this is probably extra
 	-- servers.dartls.setup({})
 
-	servers.gopls.setup {}
+	config('gopls', {})
 
-	servers.sourcekit.setup {
+	config('sourcekit', {
 		single_file_support = true,
 		filetypes = { "swift", "swiftinterface", "c", "cpp", "objective-c", "objective-cpp" },
 
-		root_dir = servers.util.root_pattern(".git", "Package.swift", "compile_commands.json"),
+		root_dir = require'lspconfig.util'.root_pattern(".git", "Package.swift", "compile_commands.json"),
 
 		capabilities = {
 			workspace = {
@@ -34,11 +34,9 @@ M.setup_language_servers = function()
 				},
 			},
 		},
-	}
+	})
 
-	servers.gleam.setup {}
-
-	servers.ts_ls.setup {}
+	config('ts_ls', {})
 end
 
 M._on_attach = function(_, bufnr)

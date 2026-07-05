@@ -1,5 +1,5 @@
 return {
 	setup = function()
-		vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
+		--vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
 	end,
 }

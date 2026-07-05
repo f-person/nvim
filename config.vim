@@ -110,7 +110,7 @@ set showmatch
 set number relativenumber
 set splitbelow splitright
 set encoding=utf-8
-set clipboard+=unnamedplus
+"set clipboard+=unnamedplus
 set updatetime=50
 set hidden
 

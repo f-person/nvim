@@ -1,0 +1,39 @@
+return {
+	'gelguy/wilder.nvim',
+
+	config = function()
+		local wilder = require('wilder')
+		wilder.setup({ modes = { ':', '/', '?' } })
+
+
+		wilder.set_option('pipeline', {
+			wilder.branch(
+				wilder.cmdline_pipeline({
+					fuzzy = 1,
+					set_pcre2_pattern = 1,
+				}),
+				wilder.python_search_pipeline({
+					pattern = 'fuzzy',
+				})
+			),
+		})
+
+
+
+		wilder.set_option('renderer', wilder.popupmenu_renderer(
+			wilder.popupmenu_border_theme({
+				highlighter = wilder.basic_highlighter(),
+				min_width = '100%', -- minimum height of the popupmenu, can also be a number
+				min_height = '50%', -- to set a fixed height, set max_height to the same value
+				reverse = 0, -- if 1, shows the candidates from bottom to top
+
+
+				highlights = {
+					accent = wilder.make_hl('WilderAccent', 'Pmenu', { { a = 1 }, { a = 1 }, { foreground = '#33bcea' } }),
+				},
+
+			})
+		))
+	end
+
+}

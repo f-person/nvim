@@ -5,10 +5,10 @@ return {
 			notifications = "native",
 		},
 		lsp = {
-			color = {
-				enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
-				background = true, -- highlight the background
-			},
+--		color = {
+--			enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+--			background = true, -- highlight the background
+--		},
 
 			settings = {
 				--lineLength = 80,

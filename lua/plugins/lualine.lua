@@ -8,17 +8,17 @@ return {
 			globalstatus = true,
 		},
 		sections = {
-			lualine_a = {
-				"mode",
-				{
-					function()
-						return require 'codestats'.get_xp(0)
-					end,
-					fmt = function(s)
-						return s and (s ~= '0' or nil) and 'c::s ' .. s .. 'xp'
-					end,
-				},
-			},
+--		lualine_a = {
+--			"mode",
+--			{
+--				function()
+--					return require 'codestats'.get_xp(0)
+--				end,
+--				fmt = function(s)
+--					return s and (s ~= '0' or nil) and 'c::s ' .. s .. 'xp'
+--				end,
+--			},
+--		},
 			lualine_b = {
 				"branch",
 				"diff",
